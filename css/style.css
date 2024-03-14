@@ -1,0 +1,60 @@
+/* Normolise default styling across all browsers. Only used nescessary styles. Taken and adopted from modern-normolised.css https://github.com/sindresorhus/modern-normalize/blob/main/modern-normalize.css and HTML 5 boilerplate https://github.com/h5bp/main.css/blob/main/src/_base.css */
+*,
+::before,
+::after {
+	box-sizing: border-box; /* Use a better box model (opinionated). */
+}
+html {
+	-webkit-text-size-adjust: 100%; /* 2. Prevent adjustments of font size after orientation changes in iOS. */
+}
+body {
+	margin: 0; /* Remove the margin in all browsers. */
+}
+b, strong {
+	font-weight: bolder;
+}
+/* Add the correct font size in all browsers. */
+small {
+	font-size: 80%;
+}
+/*
+1. Change the font styles in all browsers.
+2. Remove the margin in Firefox and Safari. 
+*/
+button, input, optgroup, select, textarea {
+	font-family: inherit; /* 1 */
+	font-size: 100%; /* 1 */
+	line-height: 1.15; /* 1 */
+	margin: 0; /* 2 */
+}
+/* Remove the inheritance of text transform in Edge and Firefox. */
+button, select {
+	text-transform: none;
+}
+/* Correct the inability to style clickable types in iOS and Safari. */
+button, [type='button'], [type='reset'], [type='submit'] {
+	-webkit-appearance: button;
+}
+/* Remove default fieldset styles. */
+fieldset {
+ border: 0;
+ margin: 0;
+ padding: 0;
+}
+/* Remove the inner border and padding in Firefox. */
+::-moz-focus-inner {
+	border-style: none;
+	padding: 0;
+}
+/* Restore the focus styles unset by the previous rule. */
+:-moz-focusring {
+	outline: 1px dotted ButtonText;
+}
+/* Allow only vertical resizing of textareas. */
+textarea {
+  resize: vertical;
+}
+/* Remove the gap between audio, canvas, iframes, images, videos and the bottom of their containers: https://github.com/h5bp/html5-boilerplate/issues/440 */
+ audio,canvas, iframe, img, svg, video {
+   vertical-align: middle;
+ }
