@@ -156,11 +156,14 @@ header {
 
 	height: 767px;
 	width: 100%;
-	margin-top:-94px;
+	margin-top:-95px;
 	background: #f23586 url(../images/hero-banner-bg.svg) no-repeat center center / cover ;
-	z-index: 1;
+	z-index: 1; /* to make sure it's behind of all page elements. */
+	/* I'd have added svg bg to the body and pushed it top center,
+	   however I needed to be able to create a slanted bottom of the hero-banner 
+	   and you need a box for that */
 
-
+	/* slanted bottom of hero banner */
 	clip-path: polygon( 
 		0 0,
 		100% 0,
