@@ -115,6 +115,7 @@ header {
     background-color: rgba(0,0,0,1);
 	border-radius: 4px;
 	position: sticky;
+	z-index: 999;
 
     
     & nav, ul {
@@ -139,10 +140,10 @@ header {
     & li {
         padding:;
         margin: 0 4px;
+        list-style: none;
     }
 	& li a {
         color: white;
-        list-style: none;
 		text-decoration: none;
 		padding: 8px;
 
@@ -156,7 +157,16 @@ header {
 	height: 767px;
 	width: 100%;
 	margin-top:-94px;
-	background: #f23586 url(/images/hero-banner-bg.svg) no-repeat center center / cover ;
+	background: #f23586 url(../images/hero-banner-bg.svg) no-repeat center center / cover ;
+	z-index: 1;
+
+
+	clip-path: polygon( 
+		0 0,
+		100% 0,
+		100% calc(100% - 10vw),
+		0 100%
+		);
 }
 
 section {
