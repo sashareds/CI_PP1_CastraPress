@@ -9,7 +9,7 @@ This Repo is for project Portfolio 1 as part of Full Stack Developer diploma at 
 
 
 
-![alt_text](docs/images/design-preview.jpg "Design Preview")
+![alt_text](docs/img/design-preview.jpg "Design Preview")
 
 
 
