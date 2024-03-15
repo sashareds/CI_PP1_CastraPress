@@ -1,4 +1,5 @@
-/* Normolise default styling across all browsers. Only used nescessary styles. Taken and adopted from modern-normolised.css https://github.com/sindresorhus/modern-normalize/blob/main/modern-normalize.css and HTML 5 boilerplate https://github.com/h5bp/main.css/blob/main/src/_base.css */
+
+/*  1.0 Normolise default styling across all browsers. Only used nescessary styles. Taken and adopted from modern-normolised.css https://github.com/sindresorhus/modern-normalize/blob/main/modern-normalize.css and HTML 5 boilerplate https://github.com/h5bp/main.css/blob/main/src/_base.css */
 *,
 ::before,
 ::after {
@@ -59,9 +60,9 @@ textarea {
     vertical-align: middle;
  }
 
- /* Typogrpahy with 8px grid system*/
+ /* TYPOGRAPHY with 8px grid system*/
 
- /* defining baseline values */
+ /* Defining baseline values */
 html {
     font-size: 16px;
     line-height: 24px;
@@ -106,26 +107,63 @@ html {
   }
 
 
-/* Layout */
-header {
+/*
+
+  GLOBALS
+
+*/
+/*
+ * Hide visually and from screen readers
+ */
+
+ .hidden,[hidden] {
+	display: none !important;
+ }
+
+.visually-hidden {
+	position: absolute;
+    left: -100vw;
+}
+
+/*   Colours   */
+:root {
+	--brand-transparent-black: rgba(0,0,0,0.6);
+	--mobile-nav-deviders: rgba(255, 255, 255, 0.5);
+	--main-red: #be3144;
+	--main-blue: #45567d;
+	--main-gray: #303841;
+}
+
+
+/*////
+
+   LAYOUT 
+   General layout sctructure
+
+*/
+
+/* Header and Navigation */
+
+header { 
     height: 64px;
 	max-width: 1024px;
 	margin: 8px auto 24px;
 	padding: 0 16px;
-    background-color: rgba(0,0,0,1);
+    background-color: var(--brand-transparent-black);
 	border-radius: 4px;
 	position: sticky;
 	top:0;
 	transition: top 900ms linear;
 	z-index: 999;
 
-    
+    /* Top navigation*/
     & nav, ul {
         display: flex;
 		justify-content: space-between;
 		align-items: center;
     }
 
+	/* header logo */
 	& .logo {
 		display: inline-block;
 		width: 175px;
@@ -139,8 +177,8 @@ header {
 	
 	}
 
+	/* Styling menu */
     & li {
-        padding:;
         margin: 0 4px;
         list-style: none;
     }
@@ -153,6 +191,97 @@ header {
 
 
 }
+
+/*  
+	5.3 - MOBILE NAVIGATION
+
+    Employing css magic for collapsable mobile menu 
+*/
+
+nav input[type='checkbox'], nav label {
+    display: none;
+}
+
+/* Stlying the menu icon, the checkbox stays hidden */
+nav label {
+    text-align: right;
+    display: block;
+    padding: 0.5em;
+    line-height: 1.6em;
+    align-self: center;
+	cursor: pointer;
+
+
+	& span.hamburger-line {
+		display: block;
+	}
+}
+@media (max-width: 576px) {
+	header {
+		padding:0;
+		margin:0;
+		position: relative;
+	}
+    nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin-left: 0;
+        margin-right: 0;
+    }
+    /* Because we are in mobile mode, we want to display it as a
+       vertical list */
+    nav ul {
+        display: block;
+        width: 100%;
+        flex-basis: 100%;
+		margin-block: 10px;
+		padding-inline-start: 0;
+		border-block-start: 1px solid var(--mobile-nav-deviders);
+		background-color: var(--brand-transparent-black);;
+		
+		
+		& li {
+        	margin-bottom: 0;
+        	width: 100%;
+        	text-align: right;
+        	padding: 0.5em;
+
+			& a {
+				padding: 16px;
+				inline-size: 100%;
+				display: inline-block;
+				font-size: 1.1em;
+			}
+		}
+		
+		& > *:not(:last-child) {
+			border-bottom:1px solid var(--mobile-nav-deviders);
+		}
+    }
+	
+
+	input[type='checkbox']:not(:checked)+ul {
+		display: none;
+	}
+}
+
+
+/* Designing CSS-only hamburger icon */
+
+.hamburger-line {
+	width: 32px;
+	height: 2px;
+	background-color: white;
+	margin: 8px 0;
+	transition: 0.4s;
+  }
+
+  /* #toggle:checked label .hamburger-line:first-child, .hamburger-line:first-child:hover	 {
+	transform: translate(0, 11px) rotate(-45deg);
+	background-color: red;
+  } */
+
+
 
 #hero-banner {
 
