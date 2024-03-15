@@ -77,16 +77,14 @@ It’s an amazing tech and I am glad it is finally [supported](https://caniuse.c
 On long pages It’s a good idea to have the navigation menu stay with you all the way down so that you don’t have to scroll and scroll and scroll back. 
 
 It uses simple css
-
+```css
 header {
-
-position: sticky;
-
-top:0;
-
-transition: top 900ms linear;
-
+    position: sticky;
+    top:0;
+    transition: top 900ms linear;
 }
+```
+
 
 While These features would be enough to achieve my primary goals ,  I wanted to make the website more user friendly and hide the navigation completely when the user scrolls down, just to open all the available screen space and the show it on scroll up. I didn't find a way to do that in CSS. However, I [found](https://johandejong.dev/blog/sticky-header-with-show-hide-on-scrol) a small nifty JavaScript that enables this feature. I used the whole code as is, just only had to modify it a little bit. Original author used `pageYOffset` property but it is deprecated and wasn't properly reading window scroll pixels in Safari, the header would not shop up until it reached the top.
 
