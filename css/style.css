@@ -125,6 +125,15 @@ html {
     left: -100vw;
 }
 
+.full-width {
+	width:100%;
+	margin: 0 auto;
+}
+.boxed-width {
+	max-width:1024px;
+	margin: 0 auto;
+}
+
 /*   Colours   */
 :root {
 	--brand-transparent-black: rgba(0,0,0,0.6);
@@ -198,25 +207,28 @@ header {
     Employing css magic for collapsable mobile menu 
 */
 
+/* Hiding toggle chekbox */
 nav input[type='checkbox'], nav label {
-    display: none;
+	display: none;
 }
 
-/* Stlying the menu icon, the checkbox stays hidden */
-nav label {
-    text-align: right;
-    display: block;
-    padding: 0.5em;
-    line-height: 1.6em;
-    align-self: center;
-	cursor: pointer;
-
-
-	& span.hamburger-line {
-		display: block;
-	}
-}
 @media (max-width: 576px) {
+	
+	/* Stlying the menu icon, the checkbox stays hidden */
+	nav label {
+		text-align: right;
+		display: block;
+		padding: 0.5em;
+		line-height: 1.6em;
+		align-self: center;
+		cursor: pointer;
+	
+	
+		& span.hamburger-line {
+			display: block;
+		}
+	}
+
 	header {
 		padding:0;
 		margin:0;
@@ -263,10 +275,9 @@ nav label {
 	input[type='checkbox']:not(:checked)+ul {
 		display: none;
 	}
-}
 
 
-/* Designing CSS-only hamburger icon */
+	/* Designing CSS-only hamburger icon */
 
 .hamburger-line {
 	width: 32px;
@@ -281,6 +292,8 @@ nav label {
 	background-color: red;
   } */
 
+}
+
 
 
 #hero-banner {
@@ -288,6 +301,7 @@ nav label {
 	height: 767px;
 	width: 100%;
 	margin-top:-95px;
+	padding-top: 95px;
 	background: #f23586 url(../images/hero-banner-bg.svg) no-repeat center center / cover ;
 	z-index: 1; /* to make sure it's behind of all page elements. */
 	/* I'd have added svg bg to the body and pushed it top center,
@@ -301,9 +315,22 @@ nav label {
 		100% calc(100% - 10vw),
 		0 100%
 		);
+
+	& .hero-banner-content {
+		background: #35f235 url(../images/hero-banner-image.svg) no-repeat left top / cover ;
+
+
+		& .hero-banner-usp-message {
+			max-width: 500px;
+			text-align: right;
+			float: right;
+			color: white;
+		}
+	} 
+	
 }
 
-section {
+.feature-list-container {
     display: flex;
 	flex-wrap: wrap;
     padding: 24px;
@@ -314,9 +341,6 @@ section {
     & div {
         flex: 0 0 32.33%;
         height: auto;
-    }
-    & h1 {
-        display: block;
     }
 }
 
