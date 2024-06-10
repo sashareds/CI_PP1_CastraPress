@@ -36,8 +36,8 @@ button, select {
 button, [type='button'], [type='reset'], [type='submit'] {
 	-webkit-appearance: button;
 }
-/* Remove default fieldset styles. */
-fieldset {
+/* Remove default fieldset, blockquote & figure styles. */
+fieldset, figure, blockquote {
  	border: 0;
 	margin: 0;
 	padding: 0;
@@ -139,12 +139,13 @@ html {
 
 /*   Colours   */
 :root {
-	--brand-transparent-black: rgba(0,0,0,0.6);
-	--brand-transparent-less-black: rgba(0,0,0,0.8);
-	--mobile-nav-deviders: rgba(255, 255, 255, 0.5);
-	--brand-red: #be3144;
-	--brand-blue: rgb(48, 82, 228);
-	--brand-gray: #303841;
+	--brand-transparent-black: oklch(0% 0 0 / 60%);
+	--brand-transparent-less-black: oklch(0% 0 0 / 80%);
+	--mobile-nav-deviders: oklch(100% 0 0 / 50%);
+	--brand-red: oklch(53.58% 0.177 18.34);
+	--brand-blue: oklch(51.24% 0.223 267.27);
+	--brand-blueHSL: hsl(228.64 77% 54%);
+	--brand-gray: oklch(33.69% 0.019 251.46);
 
 	& .brand-blue {
 		background-color: var(--brand-blue);
@@ -155,7 +156,7 @@ html {
 /* UI Elements */
 button, .button {
 	display: inline-block;
-	padding: 12px 24px;
+	padding: 1em 2em;
 	text-decoration: none;
 	color: white;
 	font-size: 18px;
@@ -165,10 +166,14 @@ button, .button {
 }
 
 button:hover, .button:hover {
-	transform: translateY(-1px);
-	box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08)
-}
+	box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
+	background: hsl( from var(--brand-blueHSL) h calc(s + 20%) l);
 
+}
+button:active, .button:active {
+	transform: translateY(1px);
+	box-shadow: none;
+}
 
 /*////
 
@@ -454,7 +459,15 @@ main .container-background {
 
 	& figure {
 
+
+
+
+		& img {
+			border-radius: 50%;
+		}
+
 	}
+
 }
 
 /* ALL THINGS FOOTER */
