@@ -116,7 +116,7 @@ html {
  * Hide visually and from screen readers
  */
 
- .hidden,[hidden] {
+.hidden,[hidden] {
 	display: none !important;
  }
 
@@ -129,7 +129,7 @@ html {
 	width:100%;
 }
 .boxed-width {
-	max-width:1024px;
+	max-width:1104px;
 }
 .full-width, .boxed-width {
 
@@ -137,19 +137,40 @@ html {
 	margin-left: auto;
 }
 
-/*   Colours   */
+
+
+/* GLOBAL VARIABLES */
+
 :root {
+	
+	/*   COLOUR Variables 
+	 *   In LCH encoding to have access to the LAB colour spectrum and be able to manipulate colour variations better 
+	 */
 	--brand-transparent-black: oklch(0% 0 0 / 60%);
 	--brand-transparent-less-black: oklch(0% 0 0 / 80%);
 	--mobile-nav-deviders: oklch(100% 0 0 / 50%);
 	--brand-red: oklch(53.58% 0.177 18.34);
+	--brand-pink: oklch(64.4% 0.229 0.64);
 	--brand-blue: oklch(51.24% 0.223 267.27);
+	--brand-blueLight: oklch(92.35% 0.031 275.31);
+	--brand-transaparent-blue: ;
 	--brand-blueHSL: hsl(228.64 77% 54%);
 	--brand-gray: oklch(33.69% 0.019 251.46);
+
+	/* Gradients */
+	--brand-cta-gradient: linear-gradient(144deg, oklch(50.42% 0.188 308.56) 0%, var(--brand-red) 50%, oklch(81.19% 0.148 71.76) 100%);
+	--brand-heading-gradient: linear-gradient(144deg, var(--brand-pink) 0%, var(--brand-red) 50%, oklch(81.19% 0.148 71.76) 100%);
+
+
+	/* Box dimensions */	
+	--brand-border-radius: .4rem; /* in rems to make sure they scale nicely with font size increse */
+
 
 	& .brand-blue {
 		background-color: var(--brand-blue);
 	}
+
+
 }
 
 
@@ -159,14 +180,14 @@ button, .button {
 	padding: 1em 2em;
 	text-decoration: none;
 	color: white;
-	font-size: 18px;
-	border-radius: 24px;
+	font-size: 1.3em;
+	border-radius: var(--brand-border-radius);
 	font-weight: 400;
 
 }
 
 button:hover, .button:hover {
-	box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
+	box-shadow: 0 7px 14px oklch(33.96% 0.074 281.7 / 10%), 0 3px 6px oklch(0% 0 0 / 8%);
 	background: hsl( from var(--brand-blueHSL) h calc(s + 20%) l);
 
 }
@@ -182,11 +203,19 @@ button:active, .button:active {
 
 */
 
+html { /* to make scrolling smoother */
+	scroll-behavior: smooth;
+ }
+
+body {
+	background-color: oklch(97% 0 0);
+}
+
 /* Header and Navigation */
 
 header { 
     height: 64px;
-	max-width: 1024px;
+	max-width: 1104px;
 	margin: 8px auto 24px;
 	padding: 0 16px;
     background-color: var(--brand-transparent-black);
@@ -242,6 +271,7 @@ header {
 nav input[type='checkbox'], nav label {
 	display: none;
 }
+
 
 @media (max-width: 576px) {
 	
@@ -338,7 +368,7 @@ nav input[type='checkbox'], nav label {
 	width: 100%;
 	margin-top:-95px;
 	padding-top: 95px;
-	background: #f23586 url(../images/hero-banner-bg.svg) no-repeat center center / cover ;
+	background: var(--brand-pink) url(../images/hero-banner-bg.svg) no-repeat center center / cover ;
 	z-index: 1; /* to make sure it's behind of all page elements. */
 	/* I'd have added svg bg to the body and pushed it top center,
 	   however I needed to be able to create a slanted bottom of the hero-banner 
@@ -365,9 +395,6 @@ nav input[type='checkbox'], nav label {
 			float: right;
 			color: white;
 
-			& h1 {
-
-			}
 			& p {
 				font-size: 19px;
 				font-weight: 200;
@@ -391,6 +418,21 @@ nav input[type='checkbox'], nav label {
 
 }
 
+#header-container {
+
+	background-color: var(--brand-blue);
+	margin-top:-95px;
+	padding-top: 95px;
+
+	& #header-title {
+		text-align: center;
+		padding: 64px 64px 72px;
+		color: white;
+
+	}
+
+}
+
 /*  CONTENT SECTIONS */
 
 main section {
@@ -399,11 +441,29 @@ main section {
 	padding-bottom: 48px;
 }
 main section p {
-	max-width: 60%;
 	margin: 0 auto;
-	font-size: 18px;
-	line-height: 24px;
+	font-size: 2em;
+	line-height: 2em;
 }
+
+.section-heading {
+
+	& h2 {
+		font-size: 4.5em;
+		font-weight: 600;
+		text-align: center;
+
+		
+		background-image: var(--brand-heading-gradient);
+   		color: transparent;
+   		background-clip: text;
+   		-webkit-background-clip: text;
+		
+		
+	}
+}
+
+
 
 .feature-list-container, #testimonials div {
     display: grid;
@@ -411,8 +471,8 @@ main section p {
 	gap: 24px;
 	width: 100%;
 	padding: 0.5rem;
-	margin: 0 auto;
-	text-align: center;;
+	margin: 64px auto;
+	text-align: initial;
 
 
     & div {
@@ -420,10 +480,71 @@ main section p {
 		margin-top: 24px;;
     }
 
+	& div i.features-icon {
+		width: 56px;
+		height: 56px;
+		display: block;
+		margin: 0 auto;
+	}
+
 	& div h3 {
+		font-weight: 500;
 		margin-bottom: 24px;
+		text-align: center;
+		line-height: 1.35em;
     }
 }
+
+/* Styling feature icons with sprite */
+.features-icon {
+	background: url(/images/icons/feature-icons-sprite.png) no-repeat top left;
+}
+
+.icon-designed-from-groundup {
+    background-position: 0 0;
+}
+.icon-page-load {
+    background-position: -56px 0;
+}
+.icon-always-updated {
+    background-position: -112px 0;
+}
+.icon-any-size {
+    background-position: -168px 0;
+}
+.icon-reports {
+    background-position: -224px 0;
+}
+.icon-resources {
+    background-position: -280px 0;
+}
+.icon-cloud-infrastructure {
+    background-position: -336px 0;
+}
+.icon-tech-stach-upgrade {
+    background-position: -392px 0;
+}
+.icon-demo-sites {
+    background-position: -448px 0;
+}
+.icon-site-cashing {
+    background-position: -504px 0;
+}
+.icon-firewall {
+    background-position: -560px 0;
+}
+.icon-dns-cdn {
+    background-position: -616px 0;
+}
+    
+/* @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .features-icon {
+        background: url('icons-retina.png') no-repeat top left;
+        background-size: 672px 56px;
+    }
+} */
+
+
 
 main .container-background {
 
@@ -452,22 +573,85 @@ main .container-background {
 
 #testimonials {
 
-	& h2 {
-		display: inline-block;
-		width:700px;
+	& .section-heading {
+		display: block;
 	}
 
-	& figure {
+	& h2 {
+		background-image: var(--brand-cta-gradient);
+	}
 
+	& figure {	
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: space-between;
 
+		background: oklch( from var(--brand-blue) l c h  / 0.1);
+		padding: 24px;
+		margin-top:72px;
+		border-radius: var(--brand-border-radius);
 
 
 		& img {
 			border-radius: 50%;
+			outline: 8px solid hsl( from var(--brand-blueHSL) h s 95%);
+			width: 112px;
+			margin-top: -56px;
+		}
+
+		& blockquote {
+			margin: 24px 0;
+		}
+
+		& figcaption, figcaption a  {
+			color:var(--brand-blue);
+			align-self: flex-start;
 		}
 
 	}
 
+}
+
+/* Call To Action */
+
+.cta-inline-block {
+
+	display: table;
+	border-radius: var(--brand-border-radius);
+	background: rgb(131,58,180);
+	background: var(--brand-cta-gradient);
+
+
+	& div {
+		display: table-cell;
+		vertical-align: middle;
+	}
+
+}
+.cta-text {
+	width: 70%;
+	color: white;
+}
+.cta-buton {
+	width: 30%;
+}
+
+/* CONTACT FORM */
+
+#contact-form {
+
+	& .card-container {
+
+		width: 50%;
+margin: 0 auto;
+padding: 24px;
+
+		background-color: red;
+
+		border-radius: var(--brand-border-radius);
+		box-shadow: 0 0 6px -3px #e7e7e7;
+	}
 }
 
 /* ALL THINGS FOOTER */
@@ -475,14 +659,58 @@ footer {
 
 	border-top: 1px solid grey;
 	height: 64px;
-	width: 1024px;
 	margin:24px auto;
 
     & p {
         text-align: center;
     }
+	& nav, ul {
+        display: flex;
+		justify-content: space-between;
+		align-items: center;
+
+		& li {
+			margin: 0 4px;
+			list-style: none;
+		}
+		& li a {
+			color: inherit;
+			text-decoration: none;
+			padding: 8px;
+	
+		}
+    }
 }
 
+/* ScrollUp Button */
+
+.scrollToTopBtn {
+	background-color: black;
+	border: none;
+	color: white;
+	cursor: pointer;
+	font-size: 18px;
+	line-height: 48px;
+	width: 48px;
+  
+	/* place it at the bottom right corner */
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+	/* keep it at the top of everything else */
+	z-index: 100;
+	/* hide with opacity */
+	opacity: 0;
+	/* also add a translate effect */
+	transform: translateY(100px);
+	/* and a transition */
+	transition: all 0.5s ease;
+  }
+  
+  .showBtn {
+	opacity: 1;
+	transform: translateY(0);
+  }
 /* * {
     outline: 1px solid red;
   } */
