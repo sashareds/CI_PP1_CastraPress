@@ -137,6 +137,22 @@ html {
 	margin-left: auto;
 }
 
+@media (max-width: 576px) {
+
+	.boxed-width {
+
+		padding: 0 24px;
+		width: 100%;
+	}
+
+	.boxed-width:not(#more-features.full-width) {
+
+		/* margin-inline-start: 16px;
+		margin-inline-end: 16px; */
+	}
+
+}
+
 
 
 /* GLOBAL VARIABLES */
@@ -158,8 +174,10 @@ html {
 	--brand-gray: oklch(33.69% 0.019 251.46);
 
 	/* Gradients */
-	--brand-cta-gradient: linear-gradient(144deg, oklch(50.42% 0.188 308.56) 0%, var(--brand-red) 50%, oklch(81.19% 0.148 71.76) 100%);
+	--brand-cta-gradient: linear-gradient(144deg, var(--brand-blue) 0%, oklch(50.42% 0.188 308.56) 30%, var(--brand-pink) 70%, oklch(81.19% 0.148 71.76) 100%);
 	--brand-heading-gradient: linear-gradient(144deg, var(--brand-pink) 0%, var(--brand-red) 50%, oklch(81.19% 0.148 71.76) 100%);
+	--brand-heading-gradient-2: linear-gradient(144deg, var(--brand-pink) 0%, oklch(80.42% 0.188 308.56) 50%, oklch(81.19% 0.148 71.76) 100%);
+
 
 
 	/* Box dimensions */	
@@ -204,7 +222,7 @@ button:active, .button:active {
 */
 
 html { /* to make scrolling smoother */
-	scroll-behavior: smooth;
+	scroll-behavior: smooth !important; 
  }
 
 body {
@@ -219,7 +237,7 @@ header {
 	margin: 8px auto 24px;
 	padding: 0 16px;
     background-color: var(--brand-transparent-black);
-	border-radius: 4px;
+	border-radius: var(--brand-border-radius);
 	position: sticky;
 	top:0;
 	transition: top 900ms linear;
@@ -293,8 +311,9 @@ nav input[type='checkbox'], nav label {
 	header {
 		padding:0;
 		margin:0;
-		position: relative;
+		position: sticky;
 		background-color: var(--brand-transparent-less-black);
+		border-radius: 0;
 	}
 
 	.logo {
@@ -414,6 +433,20 @@ nav input[type='checkbox'], nav label {
 		max-width: 100%;
 		float: none;
 		padding: 64px 24px 0;
+
+		& .hero-banner-usp-message {
+
+			max-width: 100%;
+
+
+			& h1 {
+				font-size: 3.25em;
+			}
+
+			& p {
+				padding-inline-start: 0 !important;
+			}
+		}
 	}
 
 }
@@ -440,10 +473,19 @@ main section {
 	padding-top: 48px;
 	padding-bottom: 48px;
 }
+
 main section p {
 	margin: 0 auto;
 	font-size: 2em;
 	line-height: 2em;
+}
+
+@media (max-width: 576px) { 
+
+	
+	main section p {
+		line-height: 1.6em;
+	}
 }
 
 .section-heading {
@@ -462,7 +504,9 @@ main section p {
 		
 	}
 }
-
+#more-features .section-heading h2 {
+	background-image: var(--brand-heading-gradient-2);
+}
 
 
 .feature-list-container, #testimonials div {
@@ -493,6 +537,15 @@ main section p {
 		text-align: center;
 		line-height: 1.35em;
     }
+}
+
+@media (max-width: 576px) { 
+	.feature-list-container, #testimonials div {
+		grid-template-columns: repeat(1, 1fr);
+		padding-left:0;
+		padding-right: 0;
+	}
+
 }
 
 /* Styling feature icons with sprite */
@@ -628,14 +681,41 @@ main .container-background {
 		vertical-align: middle;
 	}
 
+	.cta-text {
+		width: 70%;
+		color: white;
+	}
+	.cta-button {
+		width: 30%;
+	}
+
 }
-.cta-text {
-	width: 70%;
-	color: white;
+@media (max-width: 576px) { 
+	.cta-inline-block {
+
+		border-radius:0;
+
+		& div {
+			display: block;
+			padding: 16px;
+		}
+
+		.cta-text.h3{
+			font-size: 1.7em;
+			margin-bottom: 24px;
+			width: 100%;
+		}
+		.cta-button {
+			width: 100%;
+		}
+	}
+	.cta-inline-block.boxed-width {
+		margin-inline-start: 0 !important;
+		margin-inline-end: 0 !important;
+	}
 }
-.cta-buton {
-	width: 30%;
-}
+
+
 
 /* CONTACT FORM */
 
@@ -644,8 +724,8 @@ main .container-background {
 	& .card-container {
 
 		width: 50%;
-margin: 0 auto;
-padding: 24px;
+		margin: 0 auto;
+		padding: 24px;
 
 		background-color: red;
 
@@ -681,36 +761,20 @@ footer {
 		}
     }
 }
+@media (max-width: 576px) {
+	footer {
 
-/* ScrollUp Button */
+		nav {
+			display: block;
 
-.scrollToTopBtn {
-	background-color: black;
-	border: none;
-	color: white;
-	cursor: pointer;
-	font-size: 18px;
-	line-height: 48px;
-	width: 48px;
-  
-	/* place it at the bottom right corner */
-	position: fixed;
-	bottom: 20px;
-	right: 20px;
-	/* keep it at the top of everything else */
-	z-index: 100;
-	/* hide with opacity */
-	opacity: 0;
-	/* also add a translate effect */
-	transform: translateY(100px);
-	/* and a transition */
-	transition: all 0.5s ease;
-  }
-  
-  .showBtn {
-	opacity: 1;
-	transform: translateY(0);
-  }
-/* * {
-    outline: 1px solid red;
-  } */
+			& .copyright p {
+				text-align: center;
+			}
+
+			& .footer-nav {
+				display: none;
+			}
+		}
+	}
+}
+
