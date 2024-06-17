@@ -91,3 +91,20 @@ While These features would be enough to achieve my primary goals ,  I wanted to 
 Then I added CSS transition effect to smooth the hide/show effect out
 
 The site is built in 8px grid. We see our digital world through a pixel prism and one pixel on the screen can show only one pixel(although modern screens have subpixels too), therefore when we use uneven pixel sizes, we force screen pixels to show half of a pixel which creates pixelation. It’s why modern Vector programs have features that “make it pixel perfect”. 8px grid system helps to avoid this issue and make your whole site crispy clean. If you require additional information on this I have the following link to support my use of this tool. [Read more](https://uxplanet.org/everything-you-should-know-about-8-point-grid-system-in-ux-design-b69cb945b18d) 
+
+### Colour matrix
+
+I decided to play with the new color encoding system in CSS4 - [LCH(OKLCH)](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/oklch). Old RGB model is limited by the RBG color gammut and not friendly to use. HSL was an atempt to imporve that, but it limited by the RGB color space as well and has anot consistent, menaing changing colour lighntess shifts it's hue. Oklch opens the doors to the LAB colour space, including P3 colors(which used on the most modern screens), it is consistant with lightness. All this gives us an opportunety programatically create predistable and consistant colour plallets with just a few base colours and make it WCAG compatible without hurdles. 
+
+It's supported across all major browsers, however some paramaunt features such as "[from](https://caniuse.com/css-relative-colors)" isn't fully supported in FireFox(although it's already implemented in the nightly version, so we can expect it very soon). With 'from' we can take a base color and calculate, by using 'calc', a new variation e.g.
+```css
+:root {
+/* Replace lightness and saturation to a certain lightness */
+  --accent: oklch(from (--user-input) 87% 0.06 h);
+}
+```
+
+
+### Footnotes
+
+Since I am using a lot of CSS 4 features such as [varibales](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties), [nesting](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_nesting/Using_CSS_nesting), new color encding [oklch](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/oklch) etc, W3C renders my css code as invalidated due to usage of mentioned earlier CSS 4 features. Unfortunatelly this is out of my control and W3C is long known to be way behind of fast paced development of CSS [Reference](https://stackoverflow.com/questions/52930543/8-digit-hex-is-not-a-background-color-value/52931314#52931314). In my opinion, W3C isn't an indictor of a good code, since browser implimentations are vary and as long as the code works in readers browsers your code is valid. 
