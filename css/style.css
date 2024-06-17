@@ -607,7 +607,7 @@ main section p {
 
 /* Styling feature icons with sprite */
 .features-icon {
-	background: url(/images/icons/feature-icons-sprite.png) no-repeat top left;
+	background: url(../images/icons/feature-icons-sprite.png) no-repeat top left;
 }
 
 .icon-designed-from-groundup {
