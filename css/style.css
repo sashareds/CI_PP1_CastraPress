@@ -396,7 +396,7 @@ nav input[type='checkbox'], nav label {
 	}
 
 
-	/* Designing CSS-only hamburger icon */
+/* Designing CSS-only hamburger icon */
 
 .hamburger-line {
 	width: 32px;
@@ -406,10 +406,10 @@ nav input[type='checkbox'], nav label {
 	transition: 0.4s;
   }
 
-  #toggle:checked label .hamburger-line:first-child, .hamburger-line:first-child:hover	 {
+  /* #menu-toggle:checked +label .hamburger-line:nth-child(1), .hamburger-line:nth-child(1):hover	 {
 	transform: translate(0, 11px) rotate(-45deg);
 	background-color: red;
-  }
+  } */
 
 }
 
@@ -440,12 +440,14 @@ nav input[type='checkbox'], nav label {
 
 		overflow: hidden;
 		height: 650px;
+		position: relative;
 
 
 		& .hero-banner-usp-message {
+			position: absolute;
+			right: 0;
 			max-width: 500px;
 			text-align: right;
-			float: right;
 			color: white;
 
 			& p {
@@ -465,12 +467,12 @@ nav input[type='checkbox'], nav label {
 	.hero-banner-content {
 		background-image: none !important;
 		max-width: 100%;
-		float: none;
 		padding: 64px 24px 0;
 
 		& .hero-banner-usp-message {
 
 			max-width: 100%;
+			position: relative !important;
 
 
 			& h1 {
