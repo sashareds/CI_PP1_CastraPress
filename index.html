@@ -30,26 +30,26 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
 </head>
 
-<body>
+<body class="fade-in-effect">
 
     <header>
 
         <nav>
-            <a href="~/" title="CastraPress" class="logo">
+            <a href="./" title="CastraPress" class="logo">
                 <img alt="CastraPress logo" src="images/branding/castrapress_logo.svg">
             </a>
 
             <!-- The hamburger menu for mobile navigation -->
             <label for="menu-toggle" tabindex="0">
-                <div class="hamburger-line"></div>
-                <div class="hamburger-line"></div>
-                <div class="hamburger-line"></div>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
             </label>
-            <input id="menu-toggle" type="checkbox" />
+            <input id="menu-toggle" type="checkbox">
 
             <!-- Main Navigation -->
             <ul>
-                <li><a href="~/">Home</a></li>
+                <li><a href="/">Home</a></li>
                 <li><a href="#features">Features</a></li>
                 <li><a href="#more-features">More features</a></li>
                 <li><a href="#testimonials">Testimonials</a></li>
@@ -222,7 +222,9 @@
         </section>
 
         <section class="cta-inline-block boxed-width">
-            <div class="cta-text h3">Sign up now and be the first to access our specialised WordPress hosting platform!</div>
+            <div class="cta-text">
+                <h3>Sign up now and be the first to access our specialised WordPress hosting platform!</h3>
+            </div>
             <div class="cta-button">
                 <a href="get-started.html" class="button brand-blue">Get Started!</a>
             </div>

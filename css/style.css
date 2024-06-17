@@ -33,7 +33,7 @@ button, select {
 	text-transform: none;
 }
 /* Correct the inability to style clickable types in iOS and Safari. */
-button, [type='button'], [type='reset'], [type='submit'] {
+button, .button [type='button'], [type='reset'], [type='submit'] {
 	-webkit-appearance: button;
 }
 /* Remove default fieldset, blockquote & figure styles. */
@@ -91,67 +91,22 @@ html {
 	font-size: 1.625em; /* 26px */
 	line-height: 1.84615385em; /* 48px */
 	margin-top: 0.92307692em;
-	margin-bottom: 0em;
+	margin-bottom: 0;
   }
   h4, .h4 {
 	font-size: 1em; 
 	line-height: 1.5em; 
 	margin-top: 1.5em;
-	margin-bottom: 0em;
+	margin-bottom: 0;
   }
   h5 {
 	font-size: 1em;
 	line-height: 1.5em;
 	margin-top: 1.5em;
-	margin-bottom: 0em;
+	margin-bottom: 0;
   }
 
 
-/*
-
-  GLOBALS
-
-*/
-/*
- * Hide visually and from screen readers
- */
-
-.hidden,[hidden] {
-	display: none !important;
- }
-
-.visually-hidden {
-	position: absolute;
-    left: -100vw;
-}
-
-.full-width {
-	width:100%;
-}
-.boxed-width {
-	max-width:1104px;
-}
-.full-width, .boxed-width {
-
-	margin-right: auto;
-	margin-left: auto;
-}
-
-@media (max-width: 576px) {
-
-	.boxed-width {
-
-		padding: 0 24px;
-		width: 100%;
-	}
-
-	.boxed-width:not(#more-features.full-width) {
-
-		/* margin-inline-start: 16px;
-		margin-inline-end: 16px; */
-	}
-
-}
 
 
 
@@ -162,14 +117,16 @@ html {
 	/*   COLOUR Variables 
 	 *   In LCH encoding to have access to the LAB colour spectrum and be able to manipulate colour variations better 
 	 */
-	--brand-transparent-black: oklch(0% 0 0 / 60%);
-	--brand-transparent-less-black: oklch(0% 0 0 / 80%);
+	
+	--brand-black: oklch(10% 0.0593 267.27);
+	--brand-transparent-black: oklch(10% 0.0593 267.27 / 60%);
+	--brand-transparent-less-black: oklch(10% 0.0593 267.27 / 80%);
 	--mobile-nav-deviders: oklch(100% 0 0 / 50%);
 	--brand-red: oklch(53.58% 0.177 18.34);
 	--brand-pink: oklch(64.4% 0.229 0.64);
 	--brand-blue: oklch(51.24% 0.223 267.27);
 	--brand-blueLight: oklch(92.35% 0.031 275.31);
-	--brand-transaparent-blue: ;
+	--brand-transaparent-blue: oklch( from var(--brand-blue) l c h  / 0.1);
 	--brand-blueHSL: hsl(228.64 77% 54%);
 	--brand-gray: oklch(33.69% 0.019 251.46);
 
@@ -182,6 +139,7 @@ html {
 
 	/* Box dimensions */	
 	--brand-border-radius: .4rem; /* in rems to make sure they scale nicely with font size increse */
+	--site-max-width:1104px;
 
 
 	& .brand-blue {
@@ -191,22 +149,87 @@ html {
 
 }
 
+/*
+
+  GLOBALS
+
+*/
+/*
+ * Hide visually and from screen readers
+ */
+ .hidden,[hidden] {
+	display: none !important;
+ }
+
+.visually-hidden {
+	position: absolute;
+    left: -100vw;
+}
+
+.full-width {
+	width:100%;
+}
+.boxed-width {
+	max-width:var(--site-max-width);
+}
+.full-width, .boxed-width {
+
+	margin-inline: auto;
+}
+
+@media (max-width: 576px) {
+
+	.boxed-width {
+
+		padding-inline: 24px;
+		width: 100%;
+	}
+
+	/* .boxed-width:not(#more-features.full-width) {
+
+		margin-inline: 16px;
+	} */
+
+}
+/* Nice smooth fade in transition on loading and page section pointing with id anchor links */
+.fade-in-effect, 
+#features:target,
+#more-features:target,
+#testimonials:target { animation: fadeIn 1s; }
+
+@keyframes fadeIn {
+	0% { opacity: 0; }
+	100% { opacity: 1; }
+  }
+
 
 /* UI Elements */
 button, .button {
+
+	cursor: pointer;
 	display: inline-block;
+	position: relative;
+
 	padding: 1em 2em;
+	vertical-align: middle;
+	border: 0;
+	border-radius: var(--brand-border-radius);
+
+	background-color: var(--brand-blue);
+	transition: transform .1s ease 0s,padding .1s ease 0s, background-color .1s ease 0s,color .1s ease 0s;
+
+	font-size: 1.3em;
+	font-weight: 400;
 	text-decoration: none;
 	color: white;
-	font-size: 1.3em;
-	border-radius: var(--brand-border-radius);
-	font-weight: 400;
+	word-break: keep-all;
+	letter-spacing: .02rem;
 
 }
 
 button:hover, .button:hover {
 	box-shadow: 0 7px 14px oklch(33.96% 0.074 281.7 / 10%), 0 3px 6px oklch(0% 0 0 / 8%);
-	background: hsl( from var(--brand-blueHSL) h calc(s + 20%) l);
+	background-color: hsl( from var(--brand-blueHSL) h calc(s + 20%) l);
 
 }
 button:active, .button:active {
@@ -232,8 +255,8 @@ body {
 /* Header and Navigation */
 
 header { 
-    height: 64px;
-	max-width: 1104px;
+    
+	max-width: var(--site-max-width);
 	margin: 8px auto 24px;
 	padding: 0 16px;
     background-color: var(--brand-transparent-black);
@@ -266,15 +289,22 @@ header {
 
 	/* Styling menu */
     & li {
-        margin: 0 4px;
+        margin: 4px;
         list-style: none;
     }
 	& li a {
         color: white;
 		text-decoration: none;
-		padding: 8px;
+		padding: 8px 16px;
+
+		transition: background-color 0.5s ease-in-out;
 
 	}
+
+	& li a:hover, li a:active {
+		background-color: var(--brand-blue);
+		border-radius: var(--brand-border-radius);
+		}
 
 
 }
@@ -348,6 +378,10 @@ nav input[type='checkbox'], nav label {
 				inline-size: 100%;
 				display: inline-block;
 				font-size: 1.1em;
+
+				&:hover {
+					background-color: transparent;
+				}
 			}
 		}
 		
@@ -372,10 +406,10 @@ nav input[type='checkbox'], nav label {
 	transition: 0.4s;
   }
 
-  /* #toggle:checked label .hamburger-line:first-child, .hamburger-line:first-child:hover	 {
+  #toggle:checked label .hamburger-line:first-child, .hamburger-line:first-child:hover	 {
 	transform: translate(0, 11px) rotate(-45deg);
 	background-color: red;
-  } */
+  }
 
 }
 
@@ -459,9 +493,25 @@ nav input[type='checkbox'], nav label {
 
 	& #header-title {
 		text-align: center;
-		padding: 64px 64px 72px;
+		padding: 4rem 4rem 5rem;
 		color: white;
 
+	}
+
+}
+@media (max-width: 576px) {
+	#header-container {
+
+		& #header-title {
+			padding-inline: 0;
+
+			& h1 {
+				line-height: 1.3em;
+			}
+			& p {
+				line-height: 1.5em;
+			}
+		}
 	}
 
 }
@@ -540,10 +590,14 @@ main section p {
 }
 
 @media (max-width: 576px) { 
-	.feature-list-container, #testimonials div {
+	.feature-list-container:not(#more-features), #testimonials div {
 		grid-template-columns: repeat(1, 1fr);
-		padding-left:0;
-		padding-right: 0;
+		padding-inline:0;
+		
+	}
+
+	#more-features div div {
+		padding-inline: 24px;
 	}
 
 }
@@ -640,7 +694,7 @@ main .container-background {
 		align-items: center;
 		justify-content: space-between;
 
-		background: oklch( from var(--brand-blue) l c h  / 0.1);
+		background: var(--brand-blueLight);
 		padding: 24px;
 		margin-top:72px;
 		border-radius: var(--brand-border-radius);
@@ -648,7 +702,7 @@ main .container-background {
 
 		& img {
 			border-radius: 50%;
-			outline: 8px solid hsl( from var(--brand-blueHSL) h s 95%);
+			outline: 8px solid var(--brand-blueLight);
 			width: 112px;
 			margin-top: -56px;
 		}
@@ -664,6 +718,16 @@ main .container-background {
 
 	}
 
+}
+
+@media (max-width: 576px) { 
+
+	#testimonials {
+		
+		& h2 { 
+			font-size: 3.5em;
+		}
+	}
 }
 
 /* Call To Action */
@@ -700,18 +764,20 @@ main .container-background {
 			padding: 16px;
 		}
 
-		.cta-text.h3{
+		.cta-text {
+			width: 100%;
+		}
+
+		.cta-text h3{
 			font-size: 1.7em;
 			margin-bottom: 24px;
-			width: 100%;
 		}
 		.cta-button {
 			width: 100%;
 		}
 	}
 	.cta-inline-block.boxed-width {
-		margin-inline-start: 0 !important;
-		margin-inline-end: 0 !important;
+		margin-inline: 0 !important;
 	}
 }
 
@@ -727,10 +793,51 @@ main .container-background {
 		margin: 0 auto;
 		padding: 24px;
 
-		background-color: red;
+		background-color: var(--brand-blueLight);
 
 		border-radius: var(--brand-border-radius);
 		box-shadow: 0 0 6px -3px #e7e7e7;
+
+
+		& input {
+			-webkit-appearance: none;
+			transition: box-shadow .1s;
+			outline: none;
+			border: 0;
+			border-radius: var(--brand-border-radius);
+			box-shadow: inset 0 0 0 1px #e7e7e7;
+			background: white;
+			padding: 2rem;
+			margin: .6rem 0;
+			width: 100%;
+			color: var(--brand-black);
+			font-size: 1.4rem;
+			font-weight: 300;
+		}
+		button {
+			margin-top: 24px;
+		}
+	}
+}
+
+@media (max-width: 576px) {
+
+	#contact-form.boxed-width {
+		padding-inline: 4px;
+	}
+
+	#contact-form {
+
+		& .card-container {
+			width: 100%;
+			padding: 1rem;
+
+			& input {
+				padding: 1rem;
+			}
+		}
+
+		
 	}
 }
 
@@ -744,6 +851,7 @@ footer {
     & p {
         text-align: center;
     }
+
 	& nav, ul {
         display: flex;
 		justify-content: space-between;
@@ -753,6 +861,7 @@ footer {
 			margin: 0 4px;
 			list-style: none;
 		}
+
 		& li a {
 			color: inherit;
 			text-decoration: none;
@@ -761,20 +870,20 @@ footer {
 		}
     }
 }
+
+
+
 @media (max-width: 576px) {
-	footer {
+	footer nav {
 
-		nav {
-			display: block;
+		display: block;
 
-			& .copyright p {
-				text-align: center;
-			}
+		& .copyright p {
+			text-align: center;
+		}
 
-			& .footer-nav {
-				display: none;
-			}
+		& .footer-nav {
+			display: none;
 		}
 	}
 }
-
