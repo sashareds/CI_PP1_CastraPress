@@ -14,9 +14,18 @@ This Repo is for project Portfolio 1 as part of Full Stack Developer diploma at 
 
 
 # Table of contents
-1. [Footnotes](#footnotes)
+1. [External user’s goals](#external-goals)
+2. [Site owner’s goals](#site-goals)
+3. [Features included](#features)
+    1. [Responsiveness](#esponsiveness)
+    2. [Animated svg](#animated-svg)
+    3. [Sticky header navigation](#header-navigation)
+    4. [8px grid](#grid)
+    5. [Colour matrix](#colour-matrix)
+4. [Bugs and difficulties](#bugs)
+5. [Footnotes](#footnotes)
 
-## External user’s goals:
+## External user’s goals:<a name="external-goals"></a>
 
 Running a WordPress site isn’t that simple or straightforward, despite how WordPress is marketed. It might be easy to create content, but once this content becomes popular you need a decent hosting that is capable of handling a lot of users, swarm of bots and it also needs to be secure to ward off the persistent and relentless hackers. 
 
@@ -36,7 +45,7 @@ Potential customer’s goals are:
 * Quickly sort any of their tech or sales questions in an instant chat forum. 
 
 
-## Site owner’s goals:
+## Site owner’s goals:<a name="site-goals"></a>
 
 As a business owner, your concern is how to get the word out and deliver the message about your next great idea. This website is going to provide all vital information about the hosting, its tech stack, what it does and how it does it, why it’s better than other providers and most importantly how it’s going to make customers' lives better.
 
@@ -51,7 +60,7 @@ It aims to achieve the following:
 * Begin to develop a brand which is easily recognisable to customers 
 
 
-## Features included
+## Features included <a name="features"></a>
 
 The website consists of the following pages; Home, Pricing, About Us, Contacts and Registration
 
@@ -62,7 +71,7 @@ In a nutshell this formula allows you to logically structure your content, almos
 The Header of the home page, with its eye catching imagery and catchy slogan, serves as the Attract attention step. The section with a feature list helps to build up an Interest, by answering the question of “How?”. Then the section with benefits for the customers and testimonials builds and establishes trust and Desire.This section answers question “Why?” while the customers interest has been raised we offer him a CTA as a way to act on the desire and engage with the business .
 
 
-### Responsiveness
+### Responsiveness <a name="responsivness"></a>
 
 Mobile-first is a popular design approach to responsive websites, which I wanted to take, however after research of my potential customers, mobile version of the website is not going to be the first they encounter with my business and service, I believe this to be the case with both new and returning customers. Working in WordPress requires you to have a bigger screen, so most of the time clients will be looking for my services on their computers. Therefore, I decided to focus on the desktop-first version. The Mobile site is going to be a secondary point of connection between customers and the business.
 
@@ -70,12 +79,12 @@ All pages on desktops have boxed content of 1104 max-width. Having a 27 inch mon
 Most modern tablets will fit 1104px content without any issues. For smaller screen flexbox will wrap cards and other related content to fill the screen. I therefore used this format. 
 
 
-### Animated svg
+### Animated svg <a name="animated-svg"></a>
 
 It’s an amazing tech and I am glad it is finally [supported](https://caniuse.com/svg-smil) across all modern browsers. In my design approach and IA approach I need something eye catchy, but not overbearing or cheesy. This is difficult to achieve and n striking a balance but the animated gradient, consisted of brand colours, definitely gives a pop and coupled with the Unique Selling Point tagline I used this should catch visitors Attention. 
 
 
-### Sticky header navigation
+### Sticky header navigation <a name="header-navigation"></a>
 
 On long pages It’s a good idea to have the navigation menu stay with you all the way down so that you don’t have to scroll and scroll and scroll back. 
 
@@ -93,11 +102,11 @@ While These features would be enough to achieve my primary goals ,  I wanted to 
 
 Then I added CSS transition effect to smooth the hide/show effect out
 
-### 8px grid
+### 8px grid <a name="grid"></a>
 
 The site is built in 8px grid(well more like base number for dimension calculations). We see our digital world through a pixel prism and one pixel on the screen can show only one pixel(although modern screens have subpixels too), therefore when we use uneven pixel sizes(e.g. 3px. 5px, 7px, 13px etc), we force screen pixels to show half of a pixel which creates pixelation. It’s why modern Vector programs have features that “make it pixel perfect”. 8px grid system helps to avoid this issue and make your whole site crispy clean. If you require additional information on this I have the following link to support my use of this grid . [Read more](https://uxplanet.org/everything-you-should-know-about-8-point-grid-system-in-ux-design-b69cb945b18d) 
 
-### Colour matrix
+### Colour matrix <a name="colour-matrix"></a>
 
 I decided to play with the new color encoding system in CSS4 - [OKLCH](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/oklch). Old RGB model is limited by the RBG color gammut and not friendly to use. HSL was an atempt to imporve that, but it limited by the RGB color space as well and has anot consistent, menaing changing colour lighntess shifts it's hue. Oklch opens the doors to the LAB colour space, including P3 colors(which used on the most modern screens), it is consistant with lightness. All this gives us an opportunety programatically create predistable and consistant colour plallets with just a few base colours and make it WCAG compatible without hurdles. 
 
@@ -113,7 +122,7 @@ It's supported across all major browsers, however some paramaunt features such a
 }
 ```
 
-## Bugs and difficulties
+## Bugs and difficulties <a name="bugs"></a>
 
 Due my previouse experience with CSS and HTML I havent encoutered many bugs worth of mentioning. However, I did encouter some difficulties. Due to my poor initial planing for the site layout(I was designing and ploting site layout on the go, as opposed to plana nd design layout in Figma or likes), I choose wrong layout logic, which led me tweaking a lot for mobile devices. My `.boxed-with` and `.full-width` classes weren't rendering well enough(especially full with elements that had to break away from the boxed-width containers) and caused a lot of horizontal scrolling on mobile screens. I had to refactor my code. If I was doing it all from the cratch I'd be using css grid to map out all the possible layout.
 
