@@ -13,6 +13,9 @@ This Repo is for project Portfolio 1 as part of Full Stack Developer diploma at 
 
 
 
+# Table of contents
+1. [Footnotes](#footnotes)
+
 ## External user’s goals:
 
 Running a WordPress site isn’t that simple or straightforward, despite how WordPress is marketed. It might be easy to create content, but once this content becomes popular you need a decent hosting that is capable of handling a lot of users, swarm of bots and it also needs to be secure to ward off the persistent and relentless hackers. 
@@ -118,6 +121,6 @@ Main goal was to implement features, that used require JavaScript, only CSS. I h
 
 In some cases, I had tricky specificity issues with nested css and had to use `!important`. It's not the end of the world. However, I'd like to spend more time to investigate it and learn how to avoid it. 
 
-## Footnotes
+## Footnotes <a name="footnotes"></a>
 
 Since I am using a lot of CSS 4 features such as [variables](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties), [nesting](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_nesting/Using_CSS_nesting), new color encding [oklch](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/oklch) etc, W3C renders my css code as invalidated due to usage of mentioned earlier CSS 4 features. Unfortunatelly this is out of my control and W3C is long known to be way behind of fast paced development of CSS [Reference](https://stackoverflow.com/questions/52930543/8-digit-hex-is-not-a-background-color-value/52931314#52931314). In my opinion, W3C isn't an indictor of a good code, since browser implimentations are vary and as long as the code works in readers browsers your code is valid. 
