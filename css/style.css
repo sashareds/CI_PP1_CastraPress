@@ -348,6 +348,7 @@ nav input[type='checkbox'], nav label {
 
 	.logo {
 		margin-left:16px;
+		cursor: pointer;
 	}
     nav {
         flex-direction: row;
